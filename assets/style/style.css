@@ -1,6 +1,8 @@
 @import "./font.css";
 
-* {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -13,6 +15,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  background-color: black;
 }
 .main {
   width: 100vw;
@@ -55,6 +60,7 @@ html {
   -moz-box-shadow: inset 41px 0px 49px -16px rgb(0, 0, 0);
   box-shadow: inset 41px 0px 49px -16px rgb(0, 0, 0);
   animation: opacity 1s linear;
+  z-index: 20;
 }
 .banner__sneakers {
   position: absolute;
@@ -63,15 +69,15 @@ html {
   transform: scale(1);
   transform-origin: 98% 41%;
   animation: grow-snnakers 1.9s linear;
-  z-index: 5;
+  z-index: 10;
 }
-.banner__subtitle {
+.banner__name {
   position: absolute;
   bottom: 1px;
   left: 21%;
   transform: scale(1);
   transform-origin: 100% 0%;
-  animation: grow-subtitle 1.7s linear;
+  animation: grow-name 1.7s linear;
 }
 .banner__tfp {
   position: absolute;
@@ -79,7 +85,92 @@ html {
   left: 50%;
   transform: translateY(0);
   animation: up 1.5s linear;
+  z-index: 5;
+}
+.banner__wall {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  transform: translateY(0);
+  animation: fall 1.6s linear;
   z-index: 1;
+}
+.banner__logo {
+  position: absolute;
+  bottom: 22.5%;
+  right: 11%;
+  opacity: 1;
+  animation: opacity 1.5s linear;
+  z-index: 5;
+}
+.banner__text {
+  position: absolute;
+  display: flex;
+  right: 11%;
+  top: 10%;
+  z-index: 5;
+}
+.banner__text-left {
+  animation: down 1.8s linear;
+}
+.banner__text-right {
+  animation: down 2.2s linear;
+  margin-left: 0.1rem;
+}
+a {
+  background-color: transparent;
+  color: inherit;
+  text-decoration: none;
+}
+.banner__btn {
+  color: #fff;
+  text-transform: uppercase;
+  padding: 0.2rem 0.4rem;
+  background-color: #000;
+  position: absolute;
+  display: flex;
+  right: 4%;
+  bottom: 6.5%;
+  z-index: 5;
+  font-size: 0.65rem;
+  letter-spacing: 0.08rem;
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  z-index: 5;
+  animation: fall-btn 1.65s linear;
+  transition: all 0.5s ease-in-out;
+}
+.banner__btn::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #000;
+  right: -3px;
+  bottom: -3px;
+  transition: all 0.5s ease-in-out;
+}
+.banner__btn span:first-child {
+  margin-top: 0.2rem;
+}
+.banner__arrow {
+  margin-left: 0.2rem;
+  display: flex;
+  align-items: center;
+}
+.banner__arrow img {
+  max-height: 0.6rem;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.banner__btn:hover {
+  transform: translate(3px, 3px);
+}
+.banner__btn:hover::after {
+  transform: translate(-3px, -3px);
 }
 
 @keyframes bg {
@@ -123,7 +214,7 @@ html {
     transform: scale(1);
   }
 }
-@keyframes grow-subtitle {
+@keyframes grow-name {
   0% {
     transform: scale(0);
     opacity: 0;
@@ -143,6 +234,58 @@ html {
   }
   73% {
     transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fall {
+  0% {
+    transform: translateY(-110%);
+  }
+  68% {
+    transform: translateY(-110%);
+  }
+  81% {
+    transform: translateY(-10%);
+  }
+  88% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes down {
+  0% {
+    transform: translateY(-110%);
+  }
+  85% {
+    transform: translateY(-110%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes fall-btn {
+  0% {
+    transform: translateY(-1000%);
+  }
+  67% {
+    transform: translateY(-1000%);
+  }
+
+  81% {
+    transform: translateY(-100%);
+  }
+  88% {
+    transform: translateY(-300%);
+  }
+  94% {
+    transform: translateY(-10%);
+  }
+  98% {
+    transform: translateY(-30%);
   }
   100% {
     transform: translateY(0);
